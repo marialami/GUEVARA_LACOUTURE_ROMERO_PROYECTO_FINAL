@@ -32,7 +32,7 @@ public class PersonaServices implements IPersonaServices {
     private List<Persona> mViolenciaHomicida= FXCollections.observableArrayList();
     private List<Persona> mViolenciaConArmas= FXCollections.observableArrayList();
     private List<Persona> mViolenciaSexual= FXCollections.observableArrayList();
-    private List<Persona> pe = FXCollections.observableArrayList();
+
 
     private static IExport export = new Export();
     private IPersonaPersistence personaPersistence;
@@ -44,11 +44,11 @@ public class PersonaServices implements IPersonaServices {
         try {
 
             this.personaPersistence = new PersonaPersistence();
-            pe = personaPersistence.read("personas.sabana");
+            this.personas = personaPersistence.read("personas.sabana");
             this.export = new Export();
-            this.personas = pe;
-            this.victims = pe;
-            this.pViolenciaConArmas = pe;
+            this.personas = personaPersistence.read("personas.sabana");
+            this.victims = personaPersistence.read("personas.sabana");
+            this.pViolenciaConArmas = personaPersistence.read("personas.sabana");
 
 
 
@@ -85,7 +85,7 @@ public class PersonaServices implements IPersonaServices {
 
         try{
             personaPersistence.read("personas.sabana").remove(persona);
-            pe = this.personas;
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
