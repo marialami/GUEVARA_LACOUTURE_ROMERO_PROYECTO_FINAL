@@ -24,7 +24,7 @@ public class PersonaServices implements IPersonaServices {
 
 
 
-    private List<Persona> personas;
+    private List<Persona> personas = FXCollections.observableArrayList();
     private List<Persona> victims = FXCollections.observableArrayList();
     private List<Persona> pViolenciaHomicida= FXCollections.observableArrayList();
     private List<Persona> pViolenciaConArmas= FXCollections.observableArrayList();
@@ -32,20 +32,25 @@ public class PersonaServices implements IPersonaServices {
     private List<Persona> mViolenciaHomicida= FXCollections.observableArrayList();
     private List<Persona> mViolenciaConArmas= FXCollections.observableArrayList();
     private List<Persona> mViolenciaSexual= FXCollections.observableArrayList();
+    private List<Persona> pe = FXCollections.observableArrayList();
 
     private static IExport export = new Export();
     private IPersonaPersistence personaPersistence;
 
     public PersonaServices() throws IOException, ClassNotFoundException {
 
-        this.personas = FXCollections.observableArrayList();
+        //this.personas = FXCollections.observableArrayList();
 
         try {
+
             this.personaPersistence = new PersonaPersistence();
+            pe = personaPersistence.read("personas.sabana");
             this.export = new Export();
-            this.personas = personaPersistence.read("personas.sabana");
-            this.victims = personaPersistence.read("personas.sabana");
-            this.pViolenciaConArmas = personaPersistence.read("personas.sabana");
+            this.personas = pe;
+            this.victims = pe;
+            this.pViolenciaConArmas = pe;
+
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -74,12 +79,13 @@ public class PersonaServices implements IPersonaServices {
 
     @Override
     public void delete(Persona persona) {
+
         personas.remove(persona);
         getAllDeletedVictims(persona);
 
-        try {
+        try{
             personaPersistence.read("personas.sabana").remove(persona);
-            this.personas = personaPersistence.read("personas.sabana");
+            pe = this.personas;
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

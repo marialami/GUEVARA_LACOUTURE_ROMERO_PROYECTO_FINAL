@@ -11,6 +11,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
@@ -31,6 +34,7 @@ import java.util.IllegalFormatCodePointException;
 import java.util.Map;
 
 public class MainScene extends Application {
+
 
     //Vbox
     private VBox layout2;
@@ -392,6 +396,7 @@ public class MainScene extends Application {
 
         this.scene2 = new Scene(summaryLayout,1325,500);
 
+
         fileMenuItems.put("Show summary",new MenuItem("Show summary"));
 
         summaryMenu.getItems().add(fileMenuItems.get("Show summary"));
@@ -584,6 +589,7 @@ public class MainScene extends Application {
         HBox f = new HBox();
         f.setPadding(new Insets(20,0,0,80));
         f.getChildren().addAll(totalVictimsNumber,totalVictim);
+        //f.setBackground(new Background(new BackgroundFill(Color.rgb(247,233,121),CornerRadii.EMPTY), Insets.EMPTY));
 
         HBox f1 = new HBox();
         f1.setPadding(new Insets(80,0,0,80));
@@ -594,6 +600,11 @@ public class MainScene extends Application {
         f2.getChildren().addAll(totalCiviliansVictimsNumber,totalCiviliansVictims,mViolenciaConArmasNumber,mViolenciaConArmas,mViolenciaHomicidaNumber,mViolenciaHomicida,mViolenciaSexualNumber,mViolenciaSexual);
 
         summaryLayout.getChildren().addAll(f,f1,f2);
+
+        //Stop[] stops = new Stop[] {new Stop(0, Color.rgb(247,233,121)), new Stop(1, Color.rgb(121,176,247)), new Stop(2, Color.rgb(247,121,121))};
+       // LinearGradient lg = new LinearGradient(0,0,1,0, true, CycleMethod.NO_CYCLE, stops);
+
+       // summaryLayout.setBackground(new Background(new BackgroundFill(lg, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
 }
