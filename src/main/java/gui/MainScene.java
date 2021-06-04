@@ -189,7 +189,7 @@ public class MainScene extends Application {
             totalCiviliansVictimsNumber.setText(String.valueOf(personaServices.getmViolenciaSexual().size()+personaServices.getmViolenciaHomicida().size()+personaServices.getmViolenciaConArmas().size()));
             pViolenciaConArmasNumber.setText(String.valueOf(personaServices.getpViolenciaConArmas().size()));
             pViolenciaHomicidaNumber.setText(String.valueOf(personaServices.getpViolenciaHomicida().size()));
-            pViolenciaSexualNumber.setText(String.valueOf(personaServices.getmViolenciaSexual().size()));
+            pViolenciaSexualNumber.setText(String.valueOf(personaServices.getpViolenciaSexual().size()));
             mViolenciaConArmasNumber.setText(String.valueOf(personaServices.getmViolenciaConArmas().size()));
             mViolenciaHomicidaNumber.setText(String.valueOf(personaServices.getmViolenciaHomicida().size()));
             mViolenciaSexualNumber.setText(String.valueOf(personaServices.getmViolenciaSexual().size()));
@@ -217,10 +217,12 @@ public class MainScene extends Application {
             totalCiviliansVictimsNumber.setText(String.valueOf(personaServices.getmViolenciaSexual().size()+personaServices.getmViolenciaHomicida().size()+personaServices.getmViolenciaConArmas().size()));
             pViolenciaConArmasNumber.setText(String.valueOf(personaServices.getpViolenciaConArmas().size()));
             pViolenciaHomicidaNumber.setText(String.valueOf(personaServices.getpViolenciaHomicida().size()));
-            pViolenciaSexualNumber.setText(String.valueOf(personaServices.getmViolenciaSexual().size()));
+            pViolenciaSexualNumber.setText(String.valueOf(personaServices.getpViolenciaSexual().size()));
             mViolenciaConArmasNumber.setText(String.valueOf(personaServices.getmViolenciaConArmas().size()));
             mViolenciaHomicidaNumber.setText(String.valueOf(personaServices.getmViolenciaHomicida().size()));
             mViolenciaSexualNumber.setText(String.valueOf(personaServices.getmViolenciaSexual().size()));
+
+
         });
         fileMenuItems.get("Export").setOnAction(e ->
         {
@@ -263,7 +265,7 @@ public class MainScene extends Application {
             totalCiviliansVictimsNumber.setText(String.valueOf(personaServices.getmViolenciaSexual().size()+personaServices.getmViolenciaHomicida().size()+personaServices.getmViolenciaConArmas().size()));
             pViolenciaConArmasNumber.setText(String.valueOf(personaServices.getpViolenciaConArmas().size()));
             pViolenciaHomicidaNumber.setText(String.valueOf(personaServices.getpViolenciaHomicida().size()));
-            pViolenciaSexualNumber.setText(String.valueOf(personaServices.getmViolenciaSexual().size()));
+            pViolenciaSexualNumber.setText(String.valueOf(personaServices.getpViolenciaSexual().size()));
             mViolenciaConArmasNumber.setText(String.valueOf(personaServices.getmViolenciaConArmas().size()));
             mViolenciaHomicidaNumber.setText(String.valueOf(personaServices.getmViolenciaHomicida().size()));
             mViolenciaSexualNumber.setText(String.valueOf(personaServices.getmViolenciaSexual().size()));
@@ -402,7 +404,7 @@ public class MainScene extends Application {
             totalCiviliansVictimsNumber.setText(String.valueOf(personaServices.getmViolenciaSexual().size()+personaServices.getmViolenciaHomicida().size()+personaServices.getmViolenciaConArmas().size()));
             pViolenciaConArmasNumber.setText(String.valueOf(personaServices.getpViolenciaConArmas().size()));
             pViolenciaHomicidaNumber.setText(String.valueOf(personaServices.getpViolenciaHomicida().size()));
-            pViolenciaSexualNumber.setText(String.valueOf(personaServices.getmViolenciaSexual().size()));
+            pViolenciaSexualNumber.setText(String.valueOf(personaServices.getpViolenciaSexual().size()));
             mViolenciaConArmasNumber.setText(String.valueOf(personaServices.getmViolenciaConArmas().size()));
             mViolenciaHomicidaNumber.setText(String.valueOf(personaServices.getmViolenciaHomicida().size()));
             mViolenciaSexualNumber.setText(String.valueOf(personaServices.getmViolenciaSexual().size()));

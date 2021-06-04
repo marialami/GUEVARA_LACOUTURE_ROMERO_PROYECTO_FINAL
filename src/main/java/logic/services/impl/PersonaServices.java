@@ -77,7 +77,14 @@ public class PersonaServices implements IPersonaServices {
         personas.remove(persona);
         getAllDeletedVictims(persona);
 
-
+        try {
+            personaPersistence.read("personas.sabana").remove(persona);
+            this.personas = personaPersistence.read("personas.sabana");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

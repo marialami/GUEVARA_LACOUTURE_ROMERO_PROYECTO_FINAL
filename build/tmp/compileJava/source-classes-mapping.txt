@@ -1,13 +1,5 @@
 logic/entities/Side.java
  logic.entities.Side
-gui/MainScene.java
- gui.MainScene
-logic/PersonaException.java
- logic.PersonaException
-logic/entities/AggressionType.java
- logic.entities.AggressionType
-logic/persistence/impl/IExport.java
- logic.persistence.impl.IExport
 logic/entities/Exportable.java
  logic.entities.Exportable
 logic/persistence/impl/Export.java
@@ -17,9 +9,17 @@ logic/entities/Persona.java
 logic/persistence/impl/PersonaPersistence.java
  logic.persistence.impl.MyObjectOutputStream
  logic.persistence.impl.PersonaPersistence
-logic/services/impl/PersonaServices.java
- logic.services.impl.PersonaServices
-logic/services/impl/IPersonaServices.java
- logic.services.impl.IPersonaServices
+logic/PersonaException.java
+ logic.PersonaException
+logic/entities/AggressionType.java
+ logic.entities.AggressionType
+logic/persistence/impl/IExport.java
+ logic.persistence.impl.IExport
 logic/persistence/IPersonaPersistence.java
  logic.persistence.IPersonaPersistence
+logic/services/impl/IPersonaServices.java
+ logic.services.impl.IPersonaServices
+logic/services/impl/PersonaServices.java
+ logic.services.impl.PersonaServices
+gui/MainScene.java
+ gui.MainScene
