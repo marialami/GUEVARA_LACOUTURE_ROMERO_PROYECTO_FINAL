@@ -26,12 +26,12 @@ public class PersonaServices implements IPersonaServices {
 
     private List<Persona> personas;
     private List<Persona> victims = FXCollections.observableArrayList();
-    private List<Persona> pViolenciaHomicida=new ArrayList<>();
-    private List<Persona> pViolenciaConArmas=new ArrayList<>();
-    private List<Persona> pViolenciaSexual=new ArrayList<>();
-    private List<Persona> mViolenciaHomicida=new ArrayList<>();
-    private List<Persona> mViolenciaConArmas=new ArrayList<>();
-    private List<Persona> mViolenciaSexual=new ArrayList<>();
+    private List<Persona> pViolenciaHomicida= FXCollections.observableArrayList();
+    private List<Persona> pViolenciaConArmas= FXCollections.observableArrayList();
+    private List<Persona> pViolenciaSexual= FXCollections.observableArrayList();
+    private List<Persona> mViolenciaHomicida= FXCollections.observableArrayList();
+    private List<Persona> mViolenciaConArmas= FXCollections.observableArrayList();
+    private List<Persona> mViolenciaSexual= FXCollections.observableArrayList();
 
     private static IExport export = new Export();
     private IPersonaPersistence personaPersistence;
@@ -45,6 +45,13 @@ public class PersonaServices implements IPersonaServices {
             this.export = new Export();
             this.personas = personaPersistence.read("personas.sabana");
             this.victims = personaPersistence.read("personas.sabana");
+            this.pViolenciaHomicida = personaPersistence.read("personas.sabana");
+            this.pViolenciaConArmas = personaPersistence.read("personas.sabana");
+            this.pViolenciaSexual = personaPersistence.read("personas.sabana");
+            this.mViolenciaHomicida = personaPersistence.read("personas.sabana");
+            this.mViolenciaConArmas = personaPersistence.read("personas.sabana");
+            this.mViolenciaSexual = personaPersistence.read("personas.sabana");
+
         } catch (IOException e) {
             e.printStackTrace();
         }
