@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
@@ -26,9 +27,12 @@ import logic.services.impl.IPersonaServices;
 import logic.services.impl.PersonaServices;
 
 import javax.swing.text.LabelView;
+import javax.swing.text.html.ImageView;
 import javax.xml.crypto.NodeSetData;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.IllegalFormatCodePointException;
 import java.util.Map;
@@ -47,6 +51,7 @@ public class MainScene extends Application {
     private HBox hBox1;
     private HBox hBox2;
     private HBox hBox3;
+    private HBox hBox4;
 
 
     //Buttons
@@ -104,6 +109,9 @@ public class MainScene extends Application {
     private MenuBar menuBar;
     private Map<String, MenuItem> fileMenuItems;
 
+    //Image
+    private ImageView imv;
+    private Image image;
 
     //Logic Properties
     private IPersonaServices personaServices;
@@ -582,14 +590,16 @@ public class MainScene extends Application {
         crudVBox.getChildren().addAll(hBox2,hBox3,hBox1);
 
         infoLayout.getChildren().addAll(ageInfo,sideInfo,victimInfo,aggressionInfo,selectPersona);
-        layout2.getChildren().addAll(nameTitle,infoLayout,crudVBox);
+
+        hBox4 = new HBox();
+
+        layout2.getChildren().addAll(nameTitle,infoLayout,crudVBox, hBox4);
 
         //Summary menu layout
 
         HBox f = new HBox();
         f.setPadding(new Insets(20,0,0,80));
         f.getChildren().addAll(totalVictimsNumber,totalVictim);
-        //f.setBackground(new Background(new BackgroundFill(Color.rgb(247,233,121),CornerRadii.EMPTY), Insets.EMPTY));
 
         HBox f1 = new HBox();
         f1.setPadding(new Insets(80,0,0,80));
@@ -601,10 +611,10 @@ public class MainScene extends Application {
 
         summaryLayout.getChildren().addAll(f,f1,f2);
 
-        //Stop[] stops = new Stop[] {new Stop(0, Color.rgb(247,233,121)), new Stop(1, Color.rgb(121,176,247)), new Stop(2, Color.rgb(247,121,121))};
-       // LinearGradient lg = new LinearGradient(0,0,1,0, true, CycleMethod.NO_CYCLE, stops);
+        Stop[] stops = new Stop[] {new Stop(0.4, Color.rgb(247,233,121)), new Stop(0.65, Color.rgb(121,176,247)), new Stop(1, Color.rgb(247,121,121))};
+        LinearGradient lg = new LinearGradient(0,0,0,1, true, CycleMethod.NO_CYCLE, stops);
 
-       // summaryLayout.setBackground(new Background(new BackgroundFill(lg, CornerRadii.EMPTY, Insets.EMPTY)));
+        summaryLayout.setBackground(new Background(new BackgroundFill(lg, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
 }

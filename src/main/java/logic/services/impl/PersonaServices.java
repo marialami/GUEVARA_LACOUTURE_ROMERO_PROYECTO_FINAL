@@ -106,12 +106,15 @@ public class PersonaServices implements IPersonaServices {
             List<Persona> importedPersonas = new ArrayList<>();
             List<String> read = this.personaPersistence.importPersonas(file);
 
+            System.out.println(read.size());
+
             for (String line : read) {
                 String[] tokens = line.split(Exportable.CSV.toString());
-                Persona persona = new Persona(tokens[0], tokens[1], Integer.parseInt(tokens[2]),Boolean.parseBoolean(tokens[3]),Enum.valueOf(AggressionType.class,tokens[4]),Enum.valueOf(Side.class,tokens[5]));
+                Persona persona = new Persona(tokens[0], "dsd", 34, true, AggressionType.VIOLENCIA_HOMICIDA_CON_ARMAS, Side.CIVILIAN);
                 importedPersonas.add(persona);
                 this.insert(persona);
             }
+
 
             return importedPersonas;
 
