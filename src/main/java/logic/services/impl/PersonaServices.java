@@ -48,8 +48,14 @@ public class PersonaServices implements IPersonaServices {
             this.export = new Export();
             this.personas = personaPersistence.read("personas.sabana");
             this.victims = personaPersistence.read("personas.sabana");
+            /*
             this.pViolenciaConArmas = personaPersistence.read("personas.sabana");
-
+            this.pViolenciaHomicida = personaPersistence.read("peronas.sabana");
+            this.pViolenciaSexual = personaPersistence.read("personas.sabana");
+            this.mViolenciaConArmas = personaPersistence.read("personas.sabana");
+            this.mViolenciaHomicida = personaPersistence.read("personas.sabana");
+            this.mViolenciaSexual = personaPersistence.read("personas.sabana");
+             */
 
 
         } catch (IOException e) {
@@ -110,7 +116,7 @@ public class PersonaServices implements IPersonaServices {
 
             for (String line : read) {
                 String[] tokens = line.split(Exportable.CSV.toString());
-                Persona persona = new Persona(tokens[0], "dsd", 34, true, AggressionType.VIOLENCIA_HOMICIDA_CON_ARMAS, Side.CIVILIAN);
+                Persona persona = new Persona(tokens[0], tokens[1], Integer.parseInt(tokens[2]), Boolean.parseBoolean(tokens[3]), AggressionType.VIOLENCIA_HOMICIDA_CON_ARMAS, Side.CIVILIAN);
                 importedPersonas.add(persona);
                 this.insert(persona);
             }
