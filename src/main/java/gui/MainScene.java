@@ -33,6 +33,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.IllegalFormatCodePointException;
 import java.util.Map;
@@ -122,9 +123,9 @@ public class MainScene extends Application {
 
     {
         try {
-            mia = new Persona("Mia","Lacouture",18,true, AggressionType.VIOLENCIA_HOMICIDA_CON_ARMAS, Side.CIVILIAN);
-            sebas = new Persona("Sebastian","Guevara",19,false, AggressionType.VIOLENCIA_SEXUAL, Side.POLICE);
-        } catch (PersonaException e) {
+            mia = new Persona("Mia","Lacouture","12/07/2002",true, AggressionType.VIOLENCIA_HOMICIDA_CON_ARMAS, Side.CIVILIAN);
+            sebas = new Persona("Sebastian","Guevara","05/04/2002",false, AggressionType.VIOLENCIA_SEXUAL, Side.POLICE);
+        } catch (PersonaException | ParseException e) {
             e.printStackTrace();
         }
     }
@@ -172,10 +173,10 @@ public class MainScene extends Application {
 
 
             try {
-                int age = Integer.parseInt(ageInput.getText());
+                Persona p = new Persona(nameInput.getText(),lastNameInput.getText(),ageInput.getText(),victim,aggressionType,sideType);
+                int age = p.birthDateToYears(ageInput.getText());
                 if (age < 0) throw new PersonaException(PersonaException.BAD_AGE_LOWER);
                 if (age > 120) throw new PersonaException(PersonaException.BAD_AGE_UPPER);
-                Persona p = new Persona(nameInput.getText(),lastNameInput.getText(),age,victim,aggressionType,sideType);
                 this.personaServices.insert(p);
                 nameInput.clear();
                 lastNameInput.clear();
@@ -195,6 +196,8 @@ public class MainScene extends Application {
                 } catch (PersonaException personaException) {
                     personaException.printStackTrace();
                 }
+            } catch (ParseException parseException) {
+                parseException.printStackTrace();
             }
             totalVictimsNumber.setText(String.valueOf(personaServices.getVictims().size()));
             totalPoliceVictimsNumber.setText(String.valueOf(personaServices.getpViolenciaSexual().size()+personaServices.getpViolenciaHomicida().size()+personaServices.getpViolenciaConArmas().size()));
@@ -212,7 +215,11 @@ public class MainScene extends Application {
             String isVictim1 = "NO";
 
             nameTitle.setText( personasTable.getSelectionModel().getSelectedItem().getFull());
-            ageInfo.setText("Edad: "+personasTable.getSelectionModel().getSelectedItem().getAge());
+            try {
+                ageInfo.setText("Edad: "+personasTable.getSelectionModel().getSelectedItem().birthDateToYears(ageInput.getText()));
+            } catch (ParseException parseException) {
+                parseException.printStackTrace();
+            }
             sideInfo.setText("Bando: "+personasTable.getSelectionModel().getSelectedItem().getSide());
             if (personasTable.getSelectionModel().getSelectedItem().isVictim())
                 isVictim1="SI";
@@ -264,7 +271,7 @@ public class MainScene extends Application {
             if (side.getSelectionModel().getSelectedItem().equals("MANIFESTANTE"))
                 sideType = Side.CIVILIAN;
 
-            this.personaServices.edit(nameInput.getText(),lastNameInput.getText(),Integer.parseInt(ageInput.getText()),victim,aggressionType,sideType,personasTable.getSelectionModel().getSelectedItem());
+            this.personaServices.edit(nameInput.getText(),lastNameInput.getText(),ageInput.getText(),victim,aggressionType,sideType,personasTable.getSelectionModel().getSelectedItem());
             nameInput.clear();
             lastNameInput.clear();
             ageInput.clear();
@@ -373,7 +380,7 @@ public class MainScene extends Application {
         lastNameInput.setMinWidth(177);
 
         ageInput = new TextField();
-        ageInput.setPromptText("Edad");
+        ageInput.setPromptText("dd/MM/yyyy");
         ageInput.setMinWidth(177);
 
         isVictim = new ChoiceBox(FXCollections.observableArrayList("SI","NO"));

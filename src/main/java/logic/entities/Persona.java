@@ -3,7 +3,14 @@ package logic.entities;
 import logic.PersonaException;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Persona extends Exportable implements Serializable {
@@ -11,17 +18,27 @@ public class Persona extends Exportable implements Serializable {
     private String name;
     private String lastName;
     private int age;
-
+    private String date;
+    private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
     private boolean isVictim;
     private Enum aggressionType;
     private Enum side;
     private String full;
 
+    private LocalDate localDate;
+    private Instant instant;
+    private ZoneId defaultZoneId;
+    private Date birthDate;
 
-    public Persona(String name, String lastName, int age, boolean isVictim, Enum aggressionType, Enum side) throws PersonaException {
+
+    private Period diff =  Period.between(localDate, LocalDate.now());
+
+
+    public Persona(String name, String lastName, String date, boolean isVictim, Enum aggressionType, Enum side) throws PersonaException, ParseException {
         this.name = name;
         this.lastName = lastName;
-        this.age = age;
+        this.date = date;
+        this.age = diff.getYears();
         this.isVictim = isVictim;
         this.aggressionType = aggressionType;
         this.side = side;
@@ -37,7 +54,11 @@ public class Persona extends Exportable implements Serializable {
     }
 
     public String getAge() {
-        return String.valueOf(age);
+        return String.valueOf(diff.getYears());
+    }
+
+    public Date getBirthDate() throws ParseException {
+        return this.format.parse(date);
     }
 
     public boolean isVictim() {
@@ -61,7 +82,7 @@ public class Persona extends Exportable implements Serializable {
     }
 
     public void setAge(int age) {
-        this.age = age;
+        this.age = diff.getYears();
     }
 
     public void setVictim(boolean victim) {
@@ -110,7 +131,7 @@ public class Persona extends Exportable implements Serializable {
         List<String> result = new ArrayList<>();
         result.add(this.name);
         result.add(this.lastName);
-        result.add(String.valueOf(this.age));
+        result.add(String.valueOf(this.diff.getYears()));
         result.add(vistima);
         result.add(agresion);
         result.add(lado);
@@ -120,5 +141,15 @@ public class Persona extends Exportable implements Serializable {
     @Override
     public String getHeader() {
         return "Nombre, Apellido, Edad, Es Victima?, Tipo de agresión, Bando";
+    }
+
+    public int birthDateToYears(String date) throws ParseException {
+
+        birthDate = format.parse(date);
+        defaultZoneId = ZoneId.systemDefault();
+        instant = birthDate.toInstant();
+        localDate = instant.atZone(defaultZoneId).toLocalDate();
+
+        return diff.getYears();
     }
 }

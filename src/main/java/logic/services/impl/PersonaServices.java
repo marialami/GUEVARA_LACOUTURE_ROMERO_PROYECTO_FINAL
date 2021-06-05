@@ -16,6 +16,7 @@ import logic.persistence.impl.PersonaPersistence;
 import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -116,7 +117,7 @@ public class PersonaServices implements IPersonaServices {
 
             for (String line : read) {
                 String[] tokens = line.split(Exportable.CSV.toString());
-                Persona persona = new Persona(tokens[0], tokens[1], Integer.parseInt(tokens[2]), Boolean.parseBoolean(tokens[3]), AggressionType.VIOLENCIA_HOMICIDA_CON_ARMAS, Side.CIVILIAN);
+                Persona persona = new Persona(tokens[0], tokens[1], tokens[2], Boolean.parseBoolean(tokens[3]), AggressionType.VIOLENCIA_HOMICIDA_CON_ARMAS, Side.CIVILIAN);
                 importedPersonas.add(persona);
                 this.insert(persona);
             }
@@ -127,12 +128,12 @@ public class PersonaServices implements IPersonaServices {
     }
 
     @Override
-    public Persona edit(String name, String lastName, int age, boolean isVictim, Enum aggressionType, Enum side,Persona a) {
+    public Persona edit(String name, String lastName, String date, boolean isVictim, Enum aggressionType, Enum side,Persona a) {
 
         Persona pee = null;
         try {
-            pee = new Persona(name,lastName,age,isVictim,aggressionType,side);
-        } catch (PersonaException e) {
+            pee = new Persona(name,lastName,date,isVictim,aggressionType,side);
+        } catch (PersonaException | ParseException e) {
             e.printStackTrace();
         }
         personas.remove(a);

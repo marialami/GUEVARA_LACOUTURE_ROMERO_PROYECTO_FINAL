@@ -4,22 +4,22 @@ logic/entities/Exportable.java
  logic.entities.Exportable
 logic/persistence/impl/Export.java
  logic.persistence.impl.Export
+logic/entities/AggressionType.java
+ logic.entities.AggressionType
+logic/persistence/impl/IExport.java
+ logic.persistence.impl.IExport
+logic/PersonaException.java
+ logic.PersonaException
 logic/entities/Persona.java
  logic.entities.Persona
 logic/persistence/impl/PersonaPersistence.java
  logic.persistence.impl.MyObjectOutputStream
  logic.persistence.impl.PersonaPersistence
-logic/PersonaException.java
- logic.PersonaException
-logic/entities/AggressionType.java
- logic.entities.AggressionType
-logic/persistence/impl/IExport.java
- logic.persistence.impl.IExport
-logic/persistence/IPersonaPersistence.java
- logic.persistence.IPersonaPersistence
-logic/services/impl/IPersonaServices.java
- logic.services.impl.IPersonaServices
 logic/services/impl/PersonaServices.java
  logic.services.impl.PersonaServices
 gui/MainScene.java
  gui.MainScene
+logic/services/impl/IPersonaServices.java
+ logic.services.impl.IPersonaServices
+logic/persistence/IPersonaPersistence.java
+ logic.persistence.IPersonaPersistence

@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 public class MainSaceneTest {
     static PersonaServices pp;
@@ -26,17 +27,17 @@ public class MainSaceneTest {
 
 
     @BeforeAll
-    static void setUp() throws IOException, ClassNotFoundException, PersonaException {
+    static void setUp() throws IOException, ClassNotFoundException, PersonaException, ParseException {
         pp = new PersonaServices();
-        p1 = new Persona("Diego", "Prieto", 26, true, AggressionType.VIOLENCIA_HOMICIDA_CON_ARMAS, Side.POLICE);
-        p11 = new Persona("Diego", "Prieto", 26, true, AggressionType.VIOLENCIA_HOMICIDA_CON_ARMAS, Side.POLICE);
-        p2 = new Persona("Diego", "Prieto", 26, true, AggressionType.VIOLENCIA_CON_ARMAS, Side.POLICE);
-        p3 = new Persona("Diego", "Prieto", 26, true, AggressionType.VIOLENCIA_SEXUAL, Side.POLICE);
-        p4 = new Persona("Diego", "Prieto", 26, true, AggressionType.VIOLENCIA_HOMICIDA_CON_ARMAS, Side.CIVILIAN);
-        p5 = new Persona("Diego", "Prieto", 26, true, AggressionType.VIOLENCIA_CON_ARMAS, Side.CIVILIAN);
-        p6 = new Persona("Diego", "Prieto", 26, true, AggressionType.VIOLENCIA_SEXUAL, Side.CIVILIAN);
-        p7 = new Persona("Diego", "Prieto", 150, true, AggressionType.VIOLENCIA_SEXUAL, Side.CIVILIAN);
-        p8 = new Persona("Diego", "Prieto", -150, true, AggressionType.VIOLENCIA_SEXUAL, Side.CIVILIAN);
+        p1 = new Persona("Diego", "Prieto", "01/01/1990", true, AggressionType.VIOLENCIA_HOMICIDA_CON_ARMAS, Side.POLICE);
+        p11 = new Persona("Diego", "Prieto", "01/01/1990", true, AggressionType.VIOLENCIA_HOMICIDA_CON_ARMAS, Side.POLICE);
+        p2 = new Persona("Diego", "Prieto", "01/01/1990", true, AggressionType.VIOLENCIA_CON_ARMAS, Side.POLICE);
+        p3 = new Persona("Diego", "Prieto", "01/01/1990", true, AggressionType.VIOLENCIA_SEXUAL, Side.POLICE);
+        p4 = new Persona("Diego", "Prieto", "01/01/1990", true, AggressionType.VIOLENCIA_HOMICIDA_CON_ARMAS, Side.CIVILIAN);
+        p5 = new Persona("Diego", "Prieto", "01/01/1990", true, AggressionType.VIOLENCIA_CON_ARMAS, Side.CIVILIAN);
+        p6 = new Persona("Diego", "Prieto", "01/01/1990", true, AggressionType.VIOLENCIA_SEXUAL, Side.CIVILIAN);
+        p7 = new Persona("Diego", "Prieto", "01/01/1990", true, AggressionType.VIOLENCIA_SEXUAL, Side.CIVILIAN);
+        p8 = new Persona("Diego", "Prieto", "01/01/1990", true, AggressionType.VIOLENCIA_SEXUAL, Side.CIVILIAN);
 
 
     }
@@ -56,7 +57,7 @@ public class MainSaceneTest {
     void shouldUpdateVictim() throws ClassNotFoundException, IOException, PersonaException {
 
         Persona p2 = null;
-        p2 = pp.edit("Quien","Como",3,false,AggressionType.NO_APLICA,Side.CIVILIAN,p1);
+        p2 = pp.edit("Quien","Como","01/01/1990",false,AggressionType.NO_APLICA,Side.CIVILIAN,p1);
         Assertions.assertTrue(pp.getAll().contains(p2));
     }
     @Test
