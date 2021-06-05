@@ -543,7 +543,7 @@ public class MainScene extends Application {
         this.edadAdultosJovenesNumber.setFont(new Font(35));
 
 
-        this.edadAdultos = new Label("Edad victimas\n31 a 60");
+        this.edadAdultos = new Label("Edad victimas\n31 a 60 ");
         this.edadAdultos.setPadding(new Insets(5,0,0,20));
         this.edadAdultos.setAlignment(Pos.CENTER_LEFT);
         this.edadAdultos.setFont(new Font(20));
