@@ -232,7 +232,18 @@ public class PersonaServices implements IPersonaServices {
         return victims;
     }
 
-    
+    public List<Persona> getEdadAdolecentes() {
+        return edadAdolecentes;
+    }
+    public List<Persona> getEdadAdultosJovenes() {
+        return edadAdultosJovenes;
+    }
+    public List<Persona> getEdadAdultos() {
+        return edadAdultos;
+    }
+    public List<Persona> getEdadAdultosMayores() {
+        return edadAdultosMayores;
+    }
 
 
 }

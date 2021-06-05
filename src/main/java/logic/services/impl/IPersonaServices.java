@@ -38,5 +38,8 @@ public interface IPersonaServices {
 
     List<Persona> getVictims();
 
-
+    public List<Persona> getEdadAdolecentes() ;
+    public List<Persona> getEdadAdultosJovenes() ;
+    public List<Persona> getEdadAdultos() ;
+    public List<Persona> getEdadAdultosMayores() ;
 }
