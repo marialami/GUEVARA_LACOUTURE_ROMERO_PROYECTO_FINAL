@@ -3,10 +3,7 @@ package logic.services.impl;
 import javafx.collections.FXCollections;
 
 import logic.PersonaException;
-import logic.entities.AggressionType;
-import logic.entities.Exportable;
-import logic.entities.Persona;
-import logic.entities.Side;
+import logic.entities.*;
 import logic.persistence.IPersonaPersistence;
 import logic.persistence.impl.Export;
 import logic.persistence.impl.IExport;
@@ -32,6 +29,10 @@ public class PersonaServices implements IPersonaServices {
     private List<Persona> mViolenciaHomicida= FXCollections.observableArrayList();
     private List<Persona> mViolenciaConArmas= FXCollections.observableArrayList();
     private List<Persona> mViolenciaSexual= FXCollections.observableArrayList();
+    private List<Persona> edadAdolecentes= FXCollections.observableArrayList();
+    private List<Persona> edadAdultosJovenes= FXCollections.observableArrayList();
+    private List<Persona> edadAdultos= FXCollections.observableArrayList();
+    private List<Persona> edadAdultosMayores= FXCollections.observableArrayList();
 
 
     private static IExport export = new Export();
@@ -161,6 +162,14 @@ public class PersonaServices implements IPersonaServices {
                 mViolenciaConArmas.add(persona);
             if (persona.getSide().equals(Side.CIVILIAN)&&persona.getAggressionType().equals(AggressionType.VIOLENCIA_SEXUAL))
                 mViolenciaSexual.add(persona);
+            if(persona.getAges() > 0 && persona.getAges()<= 15)
+                edadAdolecentes.add(persona);
+            if(persona.getAges() > 15 && persona.getAges() <= 40)
+                edadAdultosJovenes.add(persona);
+            if(persona.getAges() > 40 && persona.getAges() <= 60)
+                edadAdultos.add(persona);
+            if(persona.getAges() > 60)
+                edadAdultosMayores.add(persona);
         }
         return persona;
     }
@@ -183,6 +192,14 @@ public class PersonaServices implements IPersonaServices {
                 mViolenciaConArmas.remove(persona);
             if (persona.getSide().equals(Side.CIVILIAN)&&persona.getAggressionType().equals(AggressionType.VIOLENCIA_SEXUAL))
                 mViolenciaSexual.remove(persona);
+            if(persona.getAges() > 0 && persona.getAges()<= 15)
+                edadAdolecentes.add(persona);
+            if(persona.getAges() > 15 && persona.getAges() <= 40)
+                edadAdultosJovenes.add(persona);
+            if(persona.getAges() > 40 && persona.getAges() <= 60)
+                edadAdultos.add(persona);
+            if(persona.getAges() > 60)
+                edadAdultosMayores.add(persona);
         }
 
     }
@@ -214,4 +231,8 @@ public class PersonaServices implements IPersonaServices {
     public List<Persona> getVictims() {
         return victims;
     }
+
+    
+
+
 }
