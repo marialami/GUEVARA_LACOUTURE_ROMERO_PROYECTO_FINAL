@@ -99,6 +99,14 @@ public class MainScene extends Application {
     private Label mViolenciaConArmasNumber;
     private Label mViolenciaSexual;
     private Label mViolenciaSexualNumber;
+    private Label edadAdolecentes;
+    private Label edadAdolecentesNumber;
+    private Label edadAdultosJovenes;
+    private Label edadAdultosJovenesNumber;
+    private Label edadAdultos;
+    private Label edadAdultosNumber;
+    private Label edadAdultosMayores;
+    private Label edadAdultosMayoresNumber;
 
     //VisualProperties
     private Scene scene;
@@ -463,6 +471,10 @@ public class MainScene extends Application {
         this.aggressionInfo.setPadding(new Insets(5,20,30,20));
         this.aggressionInfo.setFont(new Font(20));
 
+
+
+
+
         this.isVictimChoice = new Label("Es victima?");
         this.sideChoice = new Label("Bando");
         this.aggressionChoice = new Label("Tipo de agresion");
@@ -472,6 +484,8 @@ public class MainScene extends Application {
         this.totalVictim.setPadding(new Insets(11,0,0,0));
         this.totalVictim.setAlignment(Pos.CENTER_RIGHT);
         this.totalVictim.setFont(new Font(35));
+
+
 
         this.totalVictimsNumber = new Label();
         this.totalVictimsNumber.setAlignment(Pos.CENTER_LEFT);
@@ -505,6 +519,52 @@ public class MainScene extends Application {
         this.pViolenciaConArmasNumber = new Label();
         this.pViolenciaConArmasNumber.setAlignment(Pos.CENTER_LEFT);
         this.pViolenciaConArmasNumber.setFont(new Font(35));
+
+
+
+        this.edadAdolecentes = new Label("Edad victimas\n0 a 15");
+        this.edadAdolecentes.setPadding(new Insets(5,0,0,20));
+        this.edadAdolecentes.setAlignment(Pos.CENTER_LEFT);
+        this.edadAdolecentes.setFont(new Font(20));
+
+        this.edadAdolecentesNumber = new Label("0");
+        this.edadAdolecentesNumber.setAlignment(Pos.CENTER_LEFT);
+        this.edadAdolecentesNumber.setFont(new Font(35));
+
+
+        this.edadAdultosJovenes = new Label("Edad victimas\n16 a 30");
+        this.edadAdultosJovenes.setPadding(new Insets(5,0,0,20));
+        this.edadAdultosJovenes.setAlignment(Pos.CENTER_LEFT);
+        this.edadAdultosJovenes.setFont(new Font(20));
+
+        this.edadAdultosJovenesNumber = new Label("0");
+        this.edadAdultosJovenesNumber.setAlignment(Pos.CENTER_LEFT);
+        this.edadAdultosJovenesNumber.setPadding(new Insets(5,0,0,80));
+        this.edadAdultosJovenesNumber.setFont(new Font(35));
+
+
+        this.edadAdultos = new Label("Edad victimas\n31 a 60");
+        this.edadAdultos.setPadding(new Insets(5,0,0,20));
+        this.edadAdultos.setAlignment(Pos.CENTER_LEFT);
+        this.edadAdultos.setFont(new Font(20));
+
+        this.edadAdultosNumber = new Label("0");
+        this.edadAdultosNumber.setAlignment(Pos.CENTER_LEFT);
+        this.edadAdultosNumber.setPadding(new Insets(5,0,0,80));
+        this.edadAdultosNumber.setFont(new Font(35));
+
+        this.edadAdultosMayores = new Label("Edad victimas\n61 a 100");
+        this.edadAdultosMayores.setPadding(new Insets(5,0,0,20));
+        this.edadAdultosMayores.setAlignment(Pos.CENTER_LEFT);
+        this.edadAdultosMayores.setFont(new Font(20));
+
+        this.edadAdultosMayoresNumber = new Label("0");
+        this.edadAdultosMayoresNumber.setAlignment(Pos.CENTER_LEFT);
+        this.edadAdultosMayoresNumber.setPadding(new Insets(5,0,0,80));
+        this.edadAdultosMayoresNumber.setFont(new Font(35));
+
+
+
 
         this.pViolenciaHomicida = new Label("Victimas Policiales\nde Violencia Homicida");
         this.pViolenciaHomicida.setPadding(new Insets(5,0,0,20));
@@ -601,6 +661,8 @@ public class MainScene extends Application {
         f.setPadding(new Insets(20,0,0,80));
         f.getChildren().addAll(totalVictimsNumber,totalVictim);
 
+
+
         HBox f1 = new HBox();
         f1.setPadding(new Insets(80,0,0,80));
         f1.getChildren().addAll(totalPoliceVictimsNumber,totalPoliceVictims,pViolenciaConArmasNumber,pViolenciaConArmas,pViolenciaHomicidaNumber,pViolenciaHomicida,pViolenciaSexualNumber,pViolenciaSexual);
@@ -609,7 +671,17 @@ public class MainScene extends Application {
         f2.setPadding(new Insets(80,0,0,80));
         f2.getChildren().addAll(totalCiviliansVictimsNumber,totalCiviliansVictims,mViolenciaConArmasNumber,mViolenciaConArmas,mViolenciaHomicidaNumber,mViolenciaHomicida,mViolenciaSexualNumber,mViolenciaSexual);
 
-        summaryLayout.getChildren().addAll(f,f1,f2);
+        HBox f3 = new HBox();
+        f3.setPadding(new Insets(80,0,0,80));
+        f3.getChildren().addAll(edadAdolecentesNumber, edadAdolecentes
+                , edadAdultosJovenesNumber, edadAdultosJovenes,
+                edadAdultosNumber, edadAdultos,
+                edadAdultosMayoresNumber, edadAdultosMayores);
+
+
+
+
+        summaryLayout.getChildren().addAll(f,f1,f2, f3);
 
         Stop[] stops = new Stop[] {new Stop(0.4, Color.rgb(247,233,121)), new Stop(0.65, Color.rgb(121,176,247)), new Stop(1, Color.rgb(247,121,121))};
         LinearGradient lg = new LinearGradient(0,0,0,1, true, CycleMethod.NO_CYCLE, stops);
